@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Docker Nginx App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        .docker-icon {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .tech-badge:hover {
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="docker-icon">🐳</div>
+        <h1>Docker + Nginx Project</h1>
+        <p>Successfully deployed using containerization!</p>
+        <p><strong>Built by:</strong> Sumit Ranjan Jha</p>
+        <div class="tech-stack">
+            <span class="tech-badge">Docker 🐋</span>
+            <span class="tech-badge">Nginx 🚀</span>
+            <span class="tech-badge">HTML/CSS 🎨</span>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            This web application is running inside a Docker container<br>
+            using Nginx as the web server.
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+name: Build CV and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    
+    - name: Build Docker image
+      run: |
+        docker build -t nginx-web-app:latest .
+    
+    - name: Test Docker image
+      run: |
+        docker run -d -p 8080:80 --name test-container nginx-web-app:latest
+        sleep 5
+        curl -f http://localhost:8080 || exit 1
+        docker stop test-container
+        docker rm test-container
+    
+    - name: Build with Docker Compose
+      run: |
+        docker-compose build
+    
+    - name: Test with Docker Compose
+      run: |
+        docker-compose up -d
+        sleep 5
+        curl -f http://localhost:8080 || exit 1
+        docker-compose down
+    
+    - name: Success message
+      run: echo "✅ Docker build and test completed successfully!"
